@@ -1,10 +1,11 @@
 # Verifier
 
-**Instantly know if two things match.**
+**A lightweight, instant text comparison app which allows you to instantly verify if two strings match.**
 
-Paste any string, hash, paragraph, code block, or essay into Column A and Column B — Verifier returns a bold **TRUE** or **FALSE** in real time.
+Paste any string, hash, paragraph, code block, or essay into the left Column A, and right Column B — Verifier returns **TRUE** or **FALSE** in real time.
 
-Built for developers, security researchers, and anyone who's ever squinted at two lines of text wondering if they're actually identical.
+Unlimited in size — you could paste an entire essay into Column A and compare to your updated edit in Column B.
+Built as a quick and light ready-reckoner for anyone who's ever squinted at two lines of text wondering if they're actually identical.
 
 ![Verifier – match](readme_images/02-match.png)
 
@@ -19,7 +20,7 @@ Verify transaction hashes, checksums, API keys, wallet addresses, or any token w
 Paste two versions of a function, config block, or environment variable side by side. Verifier tells you if they're identical — and if not, shows the exact edit distance so you know how far apart they are.
 
 **Verify essays, notes, and documents.**
-Checking that a submitted essay matches a saved draft? Confirming a contract clause wasn't altered? Paste both versions — TRUE means nothing changed, FALSE shows you exactly how much did.
+Writers, bloggers, and editors — paste your draft and your final version to confirm exactly what changed, or that nothing did. Checking a submitted essay matches a saved copy? Confirming a contract clause wasn't altered between versions? Paste both sides — TRUE means nothing changed, FALSE tells you exactly how much did.
 
 ---
 
