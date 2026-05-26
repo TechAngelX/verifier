@@ -153,7 +153,7 @@ Distributed under the MIT Licence. See `LICENCE` for more information.
 
 ## Disclaimer
 
-This tool is for authorised UCL staff use only. Ensure you have appropriate permissions before automating Portico interactions. The authors are not responsible for any misuse or unintended consequences.
+This tool is provided as-is for general use. The authors are not responsible for any misuse or unintended consequences.
 
 <br />
 <br />
