@@ -151,7 +151,11 @@ Distributed under the MIT Licence. See `LICENCE` for more information.
 
 ---
 
+<div align="center">
+
 ## Disclaimer
+
+</div>
 
 This tool is provided as-is for general use. The authors are not responsible for any misuse or unintended consequences.
 
@@ -160,7 +164,7 @@ This tool is provided as-is for general use. The authors are not responsible for
 
 <div align="center">
   <a href="https://techangelx.com" target="_blank">
-    <img src="./readme_images/logo.png" alt="Tech Angel X Logo" width="70" height="70" style="vertical-align: middle; border-radius: 50%; border: 4px solid #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <img src="./readme_images/logo.png" alt="Tech Angel X Logo" width="70" height="70">
   </a>
   <br /><br />
   <span style="font-size: 1.4em; font-weight: 300;">
