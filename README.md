@@ -122,7 +122,7 @@ Outputs `Verifier.dmg` directly to `~/Desktop`.
 
 <br>
 
-*Pure Electron — no backend, no network, fully offline. Zero telemetry.*
+*Pure Electron — no backend, no network, fully offline. Zero telemetry. Plug 'n' Play.*
 
 <br>
 
