@@ -21,18 +21,18 @@
 
 </div>
 
-**Compare hashes at a glance — instantly.**
-Verify transaction hashes, checksums, API keys, wallet addresses, or any token without squinting character by character. Paste both sides and the answer is immediate.
-
-<br>
-
-**Catch changes in code.**
-Paste two versions of a function, config block, or environment variable side by side. Verifier tells you if they're identical — and if not, shows the exact edit distance so you know how far apart they are.
+**Catch changes in any text.**
+Paste two versions of anything — a paragraph, a config, a snippet of code, a form response — side by side. Verifier tells you if they're identical, and if not, shows exactly how far apart they are.
 
 <br>
 
 **Writers, bloggers, and editors.**
-Paste your draft and your final version to confirm exactly what changed — or that nothing did. Checking a submitted essay matches a saved copy? Confirming a contract clause wasn't altered? TRUE means nothing changed. FALSE tells you exactly how much did.
+Paste your draft and your final version to confirm exactly what changed — or that nothing did. Checking a submitted piece matches a saved copy? Confirming a clause wasn't quietly altered? TRUE means nothing changed. FALSE tells you exactly how much did.
+
+<br>
+
+**Compare hashes at a glance — instantly.**
+Verify transaction hashes, checksums, API keys, or any identifier without squinting character by character. Paste both sides and the answer is immediate.
 
 <br>
 
