@@ -5,9 +5,15 @@
 ### A lightweight, instant text string comparison tool.
 ### Paste anything into Column A and Column B — get **TRUE** or **FALSE** in real time.
 
-*Built for code developers, essay writers, copy bloggers, and anyone who has ever squinted at two lines of text wondering if they are actually identical.*
+*Built for essay writers, copy bloggers, code devs, and anyone who has ever squinted at two lines of text wondering if they are actually identical.*
 
 ![Verifier – mismatch](readme_images/03-mismatch.png)
+
+### Can you tell the difference?
+
+*Both columns contain 1,000+ characters of EVM bytecode. One character has been changed. Verifier catches it instantly.*
+
+![Verifier – bytecode diff](readme_images/02-match.png)
 
 ---
 
@@ -31,12 +37,6 @@ Paste your draft and your final version to confirm exactly what changed — or t
 <br>
 
 <div align="center">
-
-### Can you tell the difference?
-
-*Both columns contain 1,000+ characters of EVM bytecode. One character has been changed. Verifier catches it instantly.*
-
-![Verifier – bytecode diff](readme_images/02-match.png)
 
 <br>
 
