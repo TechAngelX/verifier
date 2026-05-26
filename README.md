@@ -1,31 +1,19 @@
 <div align="center">
 
-<br>
-
 # Verifier
 
-### A lightweight, instant string comparison tool.
+### A lightweight, instant text string comparison tool.
 ### Paste anything into Column A and Column B — get **TRUE** or **FALSE** in real time.
-
-<br>
 
 *Built for code developers, essay writers, copy bloggers, and anyone who has ever squinted at two lines of text wondering if they are actually identical.*
 
-<br>
-
 ![Verifier – mismatch](readme_images/03-mismatch.png)
 
-<br>
-
 ---
-
-<br>
 
 ## What it's for
 
 </div>
-
-<br>
 
 **Compare hashes at a glance — instantly.**
 Verify transaction hashes, checksums, API keys, wallet addresses, or any token without squinting character by character. Paste both sides and the answer is immediate.
@@ -44,7 +32,11 @@ Paste your draft and your final version to confirm exactly what changed — or t
 
 <div align="center">
 
-![Verifier – match](readme_images/02-match.png)
+### Can you tell the difference?
+
+*Both columns contain 1,000+ characters of EVM bytecode. One character has been changed. Verifier catches it instantly.*
+
+![Verifier – bytecode diff](readme_images/02-match.png)
 
 <br>
 
