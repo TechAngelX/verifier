@@ -1,0 +1,55 @@
+{
+  "name": "verifier",
+  "version": "1.0.0",
+  "description": "Column A vs Column B string comparison tool",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "screenshot": "electron . --screenshot",
+    "build": "electron-builder --mac dmg && mv /tmp/VerifierBuild/Verifier-1.0.0.dmg ~/Desktop/Verifier.dmg && rm -rf /tmp/VerifierBuild"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "appId": "com.verifier.app",
+    "productName": "Verifier",
+    "icon": "build/icon.icns",
+    "files": [
+      "main.js",
+      "preload.js",
+      "index.html",
+      "renderer.js"
+    ],
+    "directories": {
+      "output": "/tmp/VerifierBuild"
+    },
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["universal"]
+        }
+      ],
+      "icon": "build/icon.icns",
+      "hardenedRuntime": false,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "Verifier",
+      "icon": "build/icon.icns",
+      "iconSize": 128,
+      "window": {
+        "width": 540,
+        "height": 380
+      },
+      "contents": [
+        { "x": 150, "y": 185, "type": "file" },
+        { "x": 390, "y": 185, "type": "link", "path": "/Applications" }
+      ],
+      "background": null
+    }
+  }
+}

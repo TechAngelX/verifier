@@ -1,0 +1,114 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background gradient: deep dark with a subtle green-teal warmth -->
+    <linearGradient id="bg" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0%"   stop-color="#141a14"/>
+      <stop offset="100%" stop-color="#060908"/>
+    </linearGradient>
+
+    <!-- Inner ambient glow (radial, centered) -->
+    <radialGradient id="innerGlow" cx="50%" cy="52%" r="46%">
+      <stop offset="0%"   stop-color="#00e676" stop-opacity="0.13"/>
+      <stop offset="100%" stop-color="#00e676" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Column gradient: crisp white top, softening downward -->
+    <linearGradient id="colTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#d0d8d4"/>
+    </linearGradient>
+    <linearGradient id="colBot" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#c8d4ce"/>
+      <stop offset="100%" stop-color="#98a8a0"/>
+    </linearGradient>
+
+    <!-- Tick gradient: vivid green to emerald -->
+    <linearGradient id="tickGrad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#00ff99"/>
+      <stop offset="100%" stop-color="#00c864"/>
+    </linearGradient>
+
+    <!-- Top-panel glass shine -->
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.07"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Tick outer glow bloom -->
+    <filter id="bloom" x="-80%" y="-80%" width="260%" height="260%" color-interpolation-filters="sRGB">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="22" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0 0 0 0 0
+                0 1 0 0 0.15
+                0 0 0 0 0.12
+                0 0 0 0.8 0" result="greenBlur"/>
+      <feMerge>
+        <feMergeNode in="greenBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft column drop shadow -->
+    <filter id="colShadow" x="-15%" y="-8%" width="130%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="14" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+
+    <clipPath id="clip">
+      <rect width="1024" height="1024" rx="230" ry="230"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#bg)"/>
+
+  <!-- Inner ambient glow -->
+  <rect width="1024" height="1024" rx="230" ry="230" fill="url(#innerGlow)"/>
+
+  <!-- Top glass shine panel -->
+  <rect width="1024" height="480" rx="230" ry="230" fill="url(#shine)" clip-path="url(#clip)"/>
+
+  <!-- ── Columns ── -->
+  <!-- Column A (left) — split into top cap + body for two-tone look -->
+  <rect x="168" y="222" width="200" height="56"  rx="20" ry="20" fill="url(#colTop)" filter="url(#colShadow)"/>
+  <rect x="168" y="258" width="200" height="532" rx="0"  ry="0"  fill="url(#colBot)"/>
+  <rect x="168" y="750" width="200" height="44"  rx="0"  ry="20" fill="url(#colBot)"/>
+  <!-- subtle inner highlight on left edge -->
+  <rect x="168" y="222" width="4"   height="572" rx="2"  fill="white" opacity="0.25"/>
+
+  <!-- Column B (right) -->
+  <rect x="656" y="222" width="200" height="56"  rx="20" ry="20" fill="url(#colTop)" filter="url(#colShadow)"/>
+  <rect x="656" y="258" width="200" height="532" rx="0"  ry="0"  fill="url(#colBot)"/>
+  <rect x="656" y="750" width="200" height="44"  rx="0"  ry="20" fill="url(#colBot)"/>
+  <rect x="656" y="222" width="4"   height="572" rx="2"  fill="white" opacity="0.25"/>
+
+  <!-- ── Tick (checkmark) ── -->
+  <!-- Bloom layer (slightly larger, fully blurred glow behind tick) -->
+  <polyline
+    points="394,526 468,622 638,394"
+    fill="none"
+    stroke="#00ff88"
+    stroke-width="90"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    opacity="0.35"
+    filter="url(#bloom)"
+  />
+  <!-- Main tick stroke -->
+  <polyline
+    points="394,526 468,622 638,394"
+    fill="none"
+    stroke="url(#tickGrad)"
+    stroke-width="72"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    filter="url(#bloom)"
+  />
+
+  <!-- ── Outer border (subtle rim light) ── -->
+  <rect width="1024" height="1024" rx="230" ry="230"
+    fill="none"
+    stroke="white"
+    stroke-width="1.5"
+    opacity="0.07"
+  />
+</svg>
