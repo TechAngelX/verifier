@@ -9,8 +9,7 @@
 
 <br>
 
-*Built for developers, security researchers, writers, and anyone who has ever squinted*
-*at two lines of text wondering if they are actually identical.*
+*Built for code developers, essay writers, copy bloggers, and anyone who has ever squinted at two lines of text wondering if they are actually identical.*
 
 <br>
 
