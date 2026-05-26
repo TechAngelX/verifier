@@ -136,3 +136,34 @@ Outputs `Verifier.dmg` directly to `~/Desktop`.
 <br>
 
 </div>
+
+---
+
+## Contributing
+
+Contributions are welcome. Feel free to open an issue or submit a pull request.
+
+---
+
+## Licence
+
+Distributed under the MIT Licence. See `LICENCE` for more information.
+
+---
+
+## Disclaimer
+
+This tool is for authorised UCL staff use only. Ensure you have appropriate permissions before automating Portico interactions. The authors are not responsible for any misuse or unintended consequences.
+
+<br />
+<br />
+
+<div align="center">
+  <a href="https://techangelx.com" target="_blank">
+    <img src="./readme_images/logo.png" alt="Tech Angel X Logo" width="70" height="70" style="vertical-align: middle; border-radius: 50%; border: 4px solid #ffffff; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+  </a>
+  <br /><br />
+  <span style="font-size: 1.4em; font-weight: 300;">
+    Built by Ricki Angel • <a href="https://techangelx.com" target="_blank" style="text-decoration: none;">Tech Angel X</a>
+  </span>
+</div>
