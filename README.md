@@ -130,6 +130,20 @@ Outputs `Verifier.dmg` directly to `~/Desktop`.
 
 ---
 
+## Future Implementations
+
+- **Hash functions** — compute and compare MD5, SHA-256, SHA-512, and Keccak-256 digests on the fly, without needing to pre-hash your input
+- **Inline diff viewer** — highlight the exact characters and lines that differ between Column A and Column B
+- **File drag and drop** — drop any `.txt`, `.json`, `.sol`, `.js`, or `.md` file directly into a column instead of pasting
+- **Similarity score** — show a percentage match alongside TRUE / FALSE for fuzzy comparisons
+- **Line-by-line diff mode** — toggle a Git-style diff view showing added, removed, and unchanged lines
+- **Encoding detection** — auto-detect and normalise Base64, hex, and UTF-8 encoded strings before comparing
+- **Comparison history** — save and revisit previous comparisons within the session
+- **Windows and Linux builds** — cross-platform DMG / EXE / AppImage releases
+- **Keyboard shortcuts** — compare, swap, clear, and copy without touching the mouse
+
+---
+
 ## Contributing
 
 Contributions are welcome. Feel free to open an issue or submit a pull request.
