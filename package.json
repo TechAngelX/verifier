@@ -20,7 +20,8 @@
       "main.js",
       "preload.js",
       "index.html",
-      "renderer.js"
+      "renderer.js",
+      "diff.js"
     ],
     "directories": {
       "output": "/tmp/VerifierBuild"

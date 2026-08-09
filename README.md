@@ -36,6 +36,11 @@ Verify transaction hashes, checksums, API keys, or any identifier without squint
 
 <br>
 
+**Verify downloads before you trust them.**
+Grabbed an installer from a GitHub mirror that claims to be the same as the official one? Drop both files into the Checksum tab — or paste the hash the vendor publishes — and know for certain it's the genuine file, not just one that happens to be the same size.
+
+<br>
+
 <div align="center">
 
 <br>
@@ -51,14 +56,35 @@ Verify transaction hashes, checksums, API keys, or any identifier without squint
 | | |
 |:---|:---|
 | **Live compare** | Updates TRUE / FALSE as you type |
+| **Checksum panel** | Drop two files — an installer from the official site and the "same" one from a mirror — and verify they are byte-for-byte identical via SHA-256, SHA-512, and SHA-1. Same size ≠ same file; the hashes prove it |
+| **Expected-hash check** | Paste the checksum published by a website and Verifier checks your downloaded file against it (auto-detects SHA-1 / SHA-256 / SHA-512) |
+| **Side-by-side diff view** | Git-style line diff with changed, added, and removed lines highlighted |
+| **Character-level highlights** | The exact characters that differ are marked inside each changed line |
+| **Diff navigation** | Jump between difference blocks with Prev / Next; long unchanged runs collapse |
+| **First-diff locator** | Shows the line and column of the first differing character |
+| **Similarity score** | Percentage match + Levenshtein edit distance on every mismatch |
+| **SHA-256 checksums** | Both columns hashed live — click a hash to copy it |
 | **Unlimited size** | Paste entire essays, codebases, or documents — no character limit |
 | **Case sensitive** | Toggle on / off |
 | **Trim whitespace** | Strips leading and trailing space before comparing |
 | **Ignore newlines** | Flatten multi-line content for comparison |
-| **Edit distance** | Levenshtein score shown on every mismatch |
-| **Stats** | Char count, word count, line count, length diff |
+| **Ignore all whitespace** | Compare content only — spaces, tabs, and newlines dropped |
+| **Sync scroll** | Both columns scroll together |
+| **Drag & drop** | Drop any text file straight into a column |
+| **Paste / Clear per column** | One-click clipboard paste and clear in each column header |
+| **Copy Report** | Full comparison report with stats, hashes, and a unified diff |
+| **Copy Diff** | Unified diff straight to the clipboard |
+| **Keyboard shortcuts** | ⌘⏎ compare · ⌘D diff view · ⌘1/⌘2/⌘3 switch tabs · ⌘E swap · ⌘K clear |
+| **Remembers your options** | Toggles persist between launches |
 | **Swap A ↔ B** | One click |
-| **Copy Result** | Copies TRUE or FALSE to clipboard |
+
+<br>
+
+![Verifier – diff view](readme_images/04-diffview.png)
+
+<br>
+
+![Verifier – checksum view](readme_images/05-checksum.png)
 
 <br>
 
@@ -132,15 +158,10 @@ Outputs `Verifier.dmg` directly to `~/Desktop`.
 
 ## Future Implementations
 
-- **Hash functions** — compute and compare MD5, SHA-256, SHA-512, and Keccak-256 digests on the fly, without needing to pre-hash your input
-- **Inline diff viewer** — highlight the exact characters and lines that differ between Column A and Column B
-- **File drag and drop** — drop any `.txt`, `.json`, `.sol`, `.js`, or `.md` file directly into a column instead of pasting
-- **Similarity score** — show a percentage match alongside TRUE / FALSE for fuzzy comparisons
-- **Line-by-line diff mode** — toggle a Git-style diff view showing added, removed, and unchanged lines
+- **More hash functions** — MD5, SHA-512, and Keccak-256 digests alongside the built-in SHA-256
 - **Encoding detection** — auto-detect and normalise Base64, hex, and UTF-8 encoded strings before comparing
 - **Comparison history** — save and revisit previous comparisons within the session
 - **Windows and Linux builds** — cross-platform DMG / EXE / AppImage releases
-- **Keyboard shortcuts** — compare, swap, clear, and copy without touching the mouse
 
 ---
 

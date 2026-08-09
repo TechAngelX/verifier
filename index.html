@@ -49,8 +49,9 @@
     .options-bar {
       display: flex;
       align-items: center;
-      gap: 32px;
-      padding: 16px 28px;
+      flex-wrap: wrap;
+      gap: 14px 24px;
+      padding: 13px 24px;
       background: rgba(10, 20, 14, 0.62);
       backdrop-filter: blur(24px) saturate(170%);
       -webkit-backdrop-filter: blur(24px) saturate(170%);
@@ -62,15 +63,16 @@
     }
 
     .option-label {
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       color: rgba(200, 220, 210, 0.85);
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
       cursor: pointer;
       line-height: 1;
       transition: color 0.15s;
+      white-space: nowrap;
     }
 
     .option-label:hover { color: #fff; }
@@ -84,20 +86,57 @@
     .option-label input[type="checkbox"] {
       accent-color: #00e676;
       cursor: pointer;
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       flex-shrink: 0;
     }
 
-    /* ── Columns ── */
+    /* ── View toggle (segmented) ── */
+    .view-toggle {
+      display: flex;
+      margin-left: auto;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 7px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .view-toggle button {
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      padding: 7px 18px;
+      font-size: 12px;
+      color: rgba(200, 220, 210, 0.6);
+      box-shadow: none;
+    }
+
+    .view-toggle button + button { border-left: 1px solid rgba(255,255,255,0.08); }
+
+    .view-toggle button.active {
+      background: rgba(0, 230, 118, 0.13);
+      color: #00e676;
+    }
+
+    .view-toggle button:hover:not(.active) {
+      background: rgba(255,255,255,0.06);
+      color: #fff;
+    }
+
+    /* ── Columns (editor view) ── */
     .columns {
       display: flex;
       flex: 1;
       overflow: hidden;
     }
 
+    .columns[hidden] { display: none; }
+
     .column {
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       overflow: hidden;
@@ -108,7 +147,7 @@
     }
 
     .col-header {
-      padding: 11px 18px;
+      padding: 9px 18px;
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.22em;
@@ -120,14 +159,38 @@
       border-bottom: 1px solid rgba(255,255,255,0.04);
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 10px;
     }
+
+    .col-header .spacer { flex: 1; }
 
     .char-count {
       font-size: 11px;
       font-weight: 400;
       letter-spacing: 0;
       color: rgba(255,255,255,0.28);
+      text-transform: none;
+      white-space: nowrap;
+    }
+
+    .mini-btn {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(200,220,210,0.55);
+      font-size: 10px;
+      letter-spacing: 0.06em;
+      padding: 3px 9px;
+      border-radius: 4px;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      text-transform: none;
+      font-weight: 400;
+    }
+
+    .mini-btn:hover {
+      background: rgba(255,255,255,0.07);
+      color: #fff;
+      box-shadow: none;
     }
 
     textarea {
@@ -156,10 +219,350 @@
       outline: none;
     }
 
+    textarea.drag-over {
+      background: rgba(0, 230, 118, 0.06);
+      box-shadow: inset 0 0 0 2px rgba(0, 230, 118, 0.35);
+    }
+
+    /* ── Diff view ── */
+    .diff-view {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .diff-view[hidden] { display: none; }
+
+    .diff-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 18px;
+      background: rgba(6, 14, 9, 0.55);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      flex-shrink: 0;
+    }
+
+    .diff-stats {
+      font-size: 12px;
+      color: rgba(180, 200, 190, 0.6);
+      flex: 1;
+      min-width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .diff-stats .ins { color: #00e676; font-weight: 600; }
+    .diff-stats .del { color: #ff5c7a; font-weight: 600; }
+    .diff-stats .mod { color: #ffc857; font-weight: 600; }
+
+    .diff-toolbar button {
+      padding: 5px 12px;
+      font-size: 11px;
+    }
+
+    .diff-scroll {
+      flex: 1;
+      overflow: auto;
+      user-select: text;
+    }
+
+    table.diff-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    td.ln {
+      width: 48px;
+      text-align: right;
+      padding: 1px 9px;
+      color: rgba(255,255,255,0.22);
+      user-select: none;
+      vertical-align: top;
+      background: rgba(6, 14, 9, 0.45);
+      border-right: 1px solid rgba(255,255,255,0.04);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    td.code {
+      padding: 1px 14px;
+      white-space: pre-wrap;
+      word-break: break-all;
+      vertical-align: top;
+      color: #cfe0d8;
+    }
+
+    td.code.b { border-left: 1px solid rgba(255,255,255,0.05); }
+
+    tr.row-del td.code.a,
+    tr.row-mod td.code.a { background: rgba(255, 92, 122, 0.08); }
+
+    tr.row-ins td.code.b,
+    tr.row-mod td.code.b { background: rgba(0, 230, 118, 0.06); }
+
+    tr.row-del td.ln.a,
+    tr.row-mod td.ln.a { color: rgba(255, 92, 122, 0.7); background: rgba(255, 92, 122, 0.08); }
+
+    tr.row-ins td.ln.b,
+    tr.row-mod td.ln.b { color: rgba(0, 230, 118, 0.7); background: rgba(0, 230, 118, 0.08); }
+
+    td.code.void {
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent, transparent 5px,
+        rgba(255,255,255,0.025) 5px, rgba(255,255,255,0.025) 10px
+      );
+    }
+
+    mark.d {
+      background: rgba(255, 92, 122, 0.38);
+      color: #ffe3e9;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
+    mark.i {
+      background: rgba(0, 230, 118, 0.3);
+      color: #e2ffee;
+      border-radius: 2px;
+      padding: 0 1px;
+    }
+
+    tr.row-expander td {
+      text-align: center;
+      padding: 4px;
+      font-size: 11px;
+      color: rgba(0, 230, 118, 0.45);
+      cursor: pointer;
+      background: rgba(0, 230, 118, 0.025);
+      border-top: 1px dashed rgba(0,230,118,0.12);
+      border-bottom: 1px dashed rgba(0,230,118,0.12);
+      user-select: none;
+    }
+
+    tr.row-expander td:hover {
+      color: #00e676;
+      background: rgba(0, 230, 118, 0.06);
+    }
+
+    tr.flash td.code { animation: flashRow 0.9s ease-out; }
+
+    @keyframes flashRow {
+      0%   { box-shadow: inset 0 0 0 99px rgba(0, 230, 118, 0.18); }
+      100% { box-shadow: inset 0 0 0 99px transparent; }
+    }
+
+    .diff-empty {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: rgba(255,255,255,0.25);
+      font-size: 13px;
+    }
+
+    .diff-empty .big { font-size: 26px; font-weight: 700; }
+    .diff-empty .big.ok { color: #00e676; text-shadow: 0 0 24px rgba(0,230,118,0.5); }
+
+    /* ── Checksum view ── */
+    .checksum-view {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding: 22px 26px;
+      overflow-y: auto;
+    }
+
+    .checksum-view[hidden] { display: none; }
+
+    .drop-row {
+      display: flex;
+      gap: 18px;
+      flex-shrink: 0;
+    }
+
+    .drop-zone {
+      flex: 1;
+      min-width: 0;
+      min-height: 220px;
+      position: relative;
+      border: 1.5px dashed rgba(0, 230, 118, 0.22);
+      border-radius: 12px;
+      background: rgba(4, 8, 6, 0.35);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 34px 20px 20px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+    }
+
+    .drop-zone:hover {
+      border-color: rgba(0, 230, 118, 0.45);
+      background: rgba(0, 230, 118, 0.025);
+    }
+
+    .drop-zone.drag-over {
+      border-color: rgba(0, 230, 118, 0.75);
+      background: rgba(0, 230, 118, 0.06);
+      box-shadow: 0 0 28px rgba(0, 230, 118, 0.12) inset;
+    }
+
+    .dz-title {
+      position: absolute;
+      top: 12px;
+      left: 16px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(180, 210, 195, 0.5);
+    }
+
+    .dz-clear {
+      position: absolute;
+      top: 8px;
+      right: 10px;
+    }
+
+    .dz-empty {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 14px;
+      line-height: 2;
+      pointer-events: none;
+    }
+
+    .dz-empty .sub {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.18);
+    }
+
+    .dz-info {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 12px;
+      user-select: text;
+      cursor: default;
+    }
+
+    .dz-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      word-break: break-all;
+    }
+
+    .dz-meta {
+      color: rgba(255, 255, 255, 0.35);
+      font-size: 11px;
+    }
+
+    .dz-meta.error { color: #ff5c7a; }
+
+    .dz-hash {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+    }
+
+    .dz-hash .alg {
+      color: rgba(0, 230, 118, 0.55);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      width: 60px;
+      flex-shrink: 0;
+    }
+
+    .dz-hash .val {
+      color: rgba(220, 232, 226, 0.8);
+      font-size: 11px;
+      word-break: break-all;
+      cursor: pointer;
+      line-height: 1.5;
+    }
+
+    .dz-hash .val:hover { color: #fff; }
+    .dz-hash .val.hl-ok  { color: #00e676; }
+    .dz-hash .val.hl-bad { color: #ff5c7a; }
+
+    .checksum-verdict {
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(180, 200, 190, 0.55);
+      min-height: 24px;
+      flex-shrink: 0;
+    }
+
+    .checksum-verdict .ok {
+      color: #00e676;
+      font-weight: 700;
+      text-shadow: 0 0 18px rgba(0, 230, 118, 0.5);
+    }
+
+    .checksum-verdict .bad {
+      color: #ff5c7a;
+      font-weight: 700;
+      text-shadow: 0 0 18px rgba(255, 92, 122, 0.5);
+    }
+
+    .expected-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .expected-wrap label {
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: rgba(180, 210, 195, 0.55);
+    }
+
+    .expected-wrap input {
+      background: rgba(4, 8, 6, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      color: #dce8e2;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 12px;
+      outline: none;
+      user-select: text;
+      caret-color: #00e676;
+      transition: border-color 0.15s;
+    }
+
+    .expected-wrap input::placeholder { color: rgba(255,255,255,0.12); }
+    .expected-wrap input:focus { border-color: rgba(0, 230, 118, 0.4); }
+
+    .expected-result {
+      font-size: 12px;
+      color: rgba(180, 200, 190, 0.6);
+      min-height: 18px;
+      line-height: 1.6;
+    }
+
+    .expected-result .ok  { color: #00e676; font-weight: 600; }
+    .expected-result .bad { color: #ff5c7a; font-weight: 600; }
+
     /* ── Result panel ── */
     .result-panel {
       flex-shrink: 0;
-      min-height: 78px;
+      min-height: 84px;
       background: rgba(3, 7, 5, 0.82);
       backdrop-filter: blur(32px) saturate(180%);
       -webkit-backdrop-filter: blur(32px) saturate(180%);
@@ -168,7 +571,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 24px;
+      padding: 10px 24px;
       gap: 16px;
     }
 
@@ -177,9 +580,9 @@
       align-items: center;
       gap: 18px;
       position: relative;
+      min-width: 0;
     }
 
-    /* Glow aura behind badge */
     .badge-aura {
       position: absolute;
       left: -10px;
@@ -225,13 +628,40 @@
     .result-detail {
       font-size: 12px;
       color: rgba(180, 200, 190, 0.55);
-      line-height: 1.65;
+      line-height: 1.7;
       position: relative;
       z-index: 1;
+      min-width: 0;
     }
 
     .result-detail .diff-count  { color: #ff5c7a; font-weight: 600; }
     .result-detail .match-count { color: #00e676; font-weight: 600; }
+
+    .result-detail a {
+      color: #00e676;
+      text-decoration: none;
+      border-bottom: 1px dotted rgba(0,230,118,0.5);
+      cursor: pointer;
+    }
+
+    .result-detail a:hover { text-shadow: 0 0 10px rgba(0,230,118,0.6); }
+
+    .hash-line {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .hash-line .h {
+      cursor: pointer;
+      letter-spacing: 0.03em;
+    }
+
+    .hash-line .h:hover { color: #fff; }
+    .hash-line .h.match    { color: rgba(0, 230, 118, 0.75); }
+    .hash-line .h.mismatch { color: rgba(255, 92, 122, 0.75); }
 
     /* ── Buttons ── */
     .action-btns { display: flex; gap: 8px; flex-shrink: 0; }
@@ -301,39 +731,98 @@
   </div>
 
   <div class="options-bar" role="toolbar" aria-label="Comparison options">
-    <label class="option-label">
+    <label class="option-label" title="Re-compare automatically as you type">
       <span class="live-dot" id="liveDot" aria-hidden="true"></span>
       <input type="checkbox" id="liveToggle" checked aria-label="Live compare" />
       Live compare
     </label>
-    <label class="option-label">
+    <label class="option-label" title="Treat upper/lower case as different">
       <input type="checkbox" id="caseSensitive" aria-label="Case sensitive" />
       Case sensitive
     </label>
-    <label class="option-label">
+    <label class="option-label" title="Ignore leading/trailing whitespace">
       <input type="checkbox" id="trimWhitespace" checked aria-label="Trim whitespace" />
       Trim whitespace
     </label>
-    <label class="option-label">
+    <label class="option-label" title="Treat line breaks as spaces">
       <input type="checkbox" id="ignoreNewlines" aria-label="Ignore newlines" />
       Ignore newlines
     </label>
+    <label class="option-label" title="Ignore ALL whitespace (spaces, tabs, newlines)">
+      <input type="checkbox" id="ignoreAllWs" aria-label="Ignore all whitespace" />
+      Ignore all whitespace
+    </label>
+    <label class="option-label" title="Scroll both columns together">
+      <input type="checkbox" id="syncScroll" checked aria-label="Sync scroll" />
+      Sync scroll
+    </label>
+
+    <div class="view-toggle" role="tablist" aria-label="View">
+      <button id="viewEditorBtn" class="active" role="tab" aria-selected="true" title="Editor view (⌘1)">Editor</button>
+      <button id="viewDiffBtn" role="tab" aria-selected="false" title="Diff view (⌘2 or ⌘D)">Diff</button>
+      <button id="viewChecksumBtn" role="tab" aria-selected="false" title="Checksum view (⌘3)">Checksum</button>
+    </div>
   </div>
 
-  <div class="columns" role="main">
+  <div class="columns" id="editorView" role="main">
     <div class="column">
       <div class="col-header">
         <span>Column A</span>
+        <span class="spacer"></span>
         <span class="char-count" id="countA" aria-live="polite">0 chars</span>
+        <button class="mini-btn" id="pasteA" title="Paste clipboard into Column A">Paste</button>
+        <button class="mini-btn" id="clearA" title="Clear Column A">Clear</button>
       </div>
-      <textarea id="colA" aria-label="Column A input" placeholder="Paste string, paragraph, essay, or code here..."></textarea>
+      <textarea id="colA" aria-label="Column A input" spellcheck="false" placeholder="Paste string, paragraph, essay, or code here... (or drop a file)"></textarea>
     </div>
     <div class="column">
       <div class="col-header">
         <span>Column B</span>
+        <span class="spacer"></span>
         <span class="char-count" id="countB" aria-live="polite">0 chars</span>
+        <button class="mini-btn" id="pasteB" title="Paste clipboard into Column B">Paste</button>
+        <button class="mini-btn" id="clearB" title="Clear Column B">Clear</button>
       </div>
-      <textarea id="colB" aria-label="Column B input" placeholder="Paste string, paragraph, essay, or code here..."></textarea>
+      <textarea id="colB" aria-label="Column B input" spellcheck="false" placeholder="Paste string, paragraph, essay, or code here... (or drop a file)"></textarea>
+    </div>
+  </div>
+
+  <div class="diff-view" id="diffView" hidden>
+    <div class="diff-toolbar">
+      <span class="diff-stats" id="diffStats"></span>
+      <button id="prevDiffBtn" title="Jump to previous difference">↑ Prev</button>
+      <button id="nextDiffBtn" title="Jump to next difference">↓ Next</button>
+      <button id="copyDiffBtn" title="Copy a unified diff to the clipboard">Copy Diff</button>
+    </div>
+    <div class="diff-scroll" id="diffScroll">
+      <table class="diff-table" id="diffTable" aria-label="Side by side diff"></table>
+    </div>
+    <div class="diff-empty" id="diffEmpty" hidden></div>
+  </div>
+
+  <div class="checksum-view" id="checksumView" hidden>
+    <div class="drop-row">
+      <div class="drop-zone" id="dropZoneA" title="Drop a file or click to browse">
+        <span class="dz-title">File A</span>
+        <button class="mini-btn dz-clear" id="dzClearA" hidden>✕ Remove</button>
+        <div class="dz-empty" id="dzEmptyA">⬇&nbsp; Drop any file here<br /><span class="sub">or click to browse — .exe, .dmg, .zip, anything</span></div>
+        <div class="dz-info" id="dzInfoA" hidden></div>
+        <input type="file" id="fileInputA" hidden />
+      </div>
+      <div class="drop-zone" id="dropZoneB" title="Drop a file or click to browse">
+        <span class="dz-title">File B</span>
+        <button class="mini-btn dz-clear" id="dzClearB" hidden>✕ Remove</button>
+        <div class="dz-empty" id="dzEmptyB">⬇&nbsp; Drop any file here<br /><span class="sub">or click to browse — .exe, .dmg, .zip, anything</span></div>
+        <div class="dz-info" id="dzInfoB" hidden></div>
+        <input type="file" id="fileInputB" hidden />
+      </div>
+    </div>
+    <div class="checksum-verdict" id="checksumVerdict"></div>
+    <div class="expected-wrap">
+      <label for="expectedHash">Expected checksum (optional) — paste the hash published by the official website</label>
+      <input id="expectedHash" type="text" spellcheck="false" autocomplete="off"
+             placeholder="SHA-256 / SHA-512 / SHA-1 hex, e.g. 3a7bd3e2360a3d29eea436fcfb7e44c735d117c42d1c1835420b6b9942dd4f1b" />
+      <div class="expected-result" id="expectedResult"></div>
     </div>
   </div>
 
@@ -341,16 +830,20 @@
     <div class="result-badge">
       <span class="badge-aura" id="badgeAura"></span>
       <span class="badge empty" id="resultBadge" aria-label="Result">—</span>
-      <div class="result-detail" id="resultDetail">Enter content in both columns to compare.</div>
+      <div>
+        <div class="result-detail" id="resultDetail">Enter content in both columns to compare.</div>
+        <div class="hash-line" id="hashLine"></div>
+      </div>
     </div>
     <div class="action-btns">
-      <button id="copyBtn">Copy Result</button>
-      <button id="swapBtn">Swap A ↔ B</button>
-      <button id="clearBtn">Clear All</button>
-      <button class="primary" id="compareBtn">Compare</button>
+      <button id="copyBtn" title="Copy a full comparison report">Copy Report</button>
+      <button id="swapBtn" title="Swap columns (⌘E)">Swap A ↔ B</button>
+      <button id="clearBtn" title="Clear both columns (⌘K)">Clear All</button>
+      <button class="primary" id="compareBtn" title="Compare (⌘⏎)">Compare</button>
     </div>
   </div>
 
+  <script src="diff.js"></script>
   <script src="renderer.js"></script>
 </body>
 </html>
